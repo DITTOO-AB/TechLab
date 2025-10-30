@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <title>Techlab - IT Solutions and Services React Nextjs Template</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons -->
+    <link rel="icon" href="assets/icon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/prism.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="header">
+        <h1>Techlab - IT Solutions and Services React Nextjs Template</h1>
+    </div>
+
+    <!-- Menu -->
+    <div id="doc-menu">
+        <ul class="nav">
+            <li class="section active"><a href="#intro">Intro</a></li>
+            <li class="section"><a href="#rf">Read First</a></li>
+            <li class="section"><a href="#ins">Installation</a></li>
+            <li class="section"><a href="#bss">Basic site settings</a></li>
+            <li class="section"><a href="#font">Font settings</a></li>
+            <li class="section"><a href="#theme">Theme settings</a></li>
+            <li class="section"><a href="#contact-us">Contact us form setup</a></li>
+            <li class="section"><a href="#ds">Deploy & Static build</a></li>
+            <li class="section"><a href="#cr">Credits</a></li>
+            <li class="section"><a href="#thanks">Thanks 😊</a></li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div id="doc-content" data-spy="scroll" data-target="#menu">
+
+        <div id="intro">
+            <div class="vertical">
+                <h1>Techlab - IT Solutions and Services React Nextjs Template <span>v2.0.1</span></h1>
+                <br>
+                <p>First of all, thank you for purchasing the <code>Techlab</code> Nextjs Template. You can find the
+                    detailed information about the template in this document. <br> If there is anything you cannot find
+                    in this document, you can send an e-mail via the <a class="lstyled-ink"
+                        href="https://themeforest.net/user/figthemes" target="_blank">Profile page</a>.</p>
+            </div>
+        </div>
+
+        <!-- ===================================================================================-->
+        <!-- Notice -->
+        <!-- ===================================================================================-->
+        <h1 id="rf">Techlab in a Brief</h1>
+        <p><strong>Techlab</strong> Responsive Nextjs Template.<br>
+            In download folder you will find <strong>Two folders:</strong>
+        <ul>
+            <li><code>Documentation</code> (Documentation for main template)</li>
+            <li><code>Techlab</code> (Main Template)</li>
+        </ul>
+        <br>
+        <p style="margin-top: 0;" class="files-folder">
+            Remember, when you want to add or remove section in any pages you need to adjust the section spacing by
+            giving <code>margin</code> or <code>padding</code>. Don't get panic if you messed up anything when you edit
+            the template. We are always available to support our customer.
+        </p>
+
+
+        <!-- ===================================================================================-->
+        <!-- 1 Installation -->
+        <!-- ===================================================================================-->
+        <h1 id="ins"><span>01</span>Installation</h1>
+
+        <div class="list-1">
+            <p>
+                You will get techlab-next.zip file from Themeforest. First need to unzip the file you will find one
+                folder, Contain techlab-next.
+            </p>
+            <ol>
+                <li>Go to techlab-next-v1.0 folder</li>
+                <li> run <code> npm install</code> on techlab-next-v1.0 </li>
+                <li>run command: <code> npm run dev</code>
+                </li>
+                <p style="margin-top:10px"> if you are facing trouble with the package Installation process, try
+                    this command: <code> npm i -f </code>
+                </p>
+                <p style="margin-top:10px;"> Then , please go to address localhost:3000 on your browser and You
+                    will find default landing page. </p>
+            </ol>
+            <blockquote>
+                If node.js is not installed in your local machine then please consider to download it
+                from node js official website here:
+                <a class="styled-link" href="https://nodejs.org/en/download/">Node.js</a>
+            </blockquote>
+        </div>
+
+
+        <!-- ===================================================================================-->
+        <!-- 2 Basic site settings -->
+        <!-- ===================================================================================-->
+
+        <h1 id="bss"><span>02</span>Basic site settings</h1>
+
+        <div class="visual-guide">
+            <p>
+                Change logo
+            </p>
+            <img src="./assets/images/change-logo.png" alt="change-logo" />
+        </div>
+
+        <div class="visual-guide">
+            <p>
+                Change Favicon
+            </p>
+            <img src="./assets/images/change-favicon.png" alt="change-favicon" />
+        </div>
+
+        <div class="visual-guide">
+            <p>
+                Customize menu data
+            </p>
+            <img src="./assets/images/customize-menu.png" alt="customize-menu" />
+        </div>
+
+        <div class="visual-guide">
+            <p>
+                Customize hero data
+            </p>
+            <img src="./assets/images/customize-hero-v1-data.png" alt="customize-hero-v1-data" />
+        </div>
+
+        <!-- ===================================================================================-->
+        <!-- 3 Fonts-->
+        <!-- ===================================================================================-->
+
+        <h1 id="font"><span>03</span>Fonts: @next/font</h1>
+
+        <div>
+            <pre>
+              <code class="language-typescript">
+                {/* Fonts directory */}
+                import { Poppins, Rajdhani } from 'next/font/google';
+            
+                // Set up Tailwind CSS font config accordingly.
+                // Pass the font.variable and the Tailwind font variable in the body classname.
+                export const primary = Poppins({
+                  subsets: ['latin'],
+                  variable: '--font-primary',
+                });
+            
+                export const secondary = Rajdhani({
+                  subsets: ['latin'],
+                  variable: '--font-secondary',
+                  weight: ['300', '400', '500', '600', '700'],
+                });
+            
+                {/* If you update the font-family, follow these steps: */}
+                {/* For example, updating the font from Rubik to Poppins: */}
+                {/*
+                    1. Update the import statement:
+                       import { Poppins, Rajdhani } from 'next/font/google';
+                    
+                    2. Update the font function call:
+                       export const primary = Poppins({
+                         subsets: ['latin'],
+                         variable: '--font-primary',
+                       });
+                */}
+              </code>
+            </pre>
+            <p>
+                For more information,
+                <a class="styled-link" href="https://nextjs.org/docs/app/building-your-application/optimizing/fonts">
+                    check the Next.js documentation on how to use next/font.
+                </a>
+            </p>
+        </div>
+
+        <!-- ===================================================================================-->
+        <!-- 4 Theme settings-->
+        <!-- ===================================================================================-->
+
+        <h1 id="theme"><span>04</span>Themes: System/dark/light</h1>
+
+        <div class="list-1">
+            <h2 style="padding-top:0">Theme Options</h2>
+            <ol>
+                <li>System Theme: The application automatically adjusts its theme based on the user's system
+                    preferences. This ensures a seamless experience across different devices and environments</li>
+                <li>
+                    Dark Theme (Default): The dark theme presents a sleek and modern interface with darker colors,
+                    suitable for
+                    low-light environments or users who prefer a darker aesthetic.
+                </li>
+                <li>
+                    Light Theme: The light theme features a clean and bright interface with lighter colors, ideal for
+                    well-lit environments or users who prefer a traditional design.
+                </li>
+            </ol>
+        </div>
+        <div class="list-1">
+            <h2 style="padding-top:0">Note: If you change the default theme, you will make some adjustments.</h2>
+            <ol>
+                <li>
+                    Please navigate to the root layout: app/layout.
+                </li>
+                <li>
+                    Change the HTML className from 'dark' to your desired theme ('system' or 'light').
+                </li>
+                <li>
+                    Change the ThemeProvider's defaultTheme value to your desired theme ('system' or 'light').
+                </li>
+            </ol>
+        </div>
+        <div class="visual-guide">
+            <p>
+                Change default theme value
+            </p>
+            <img src="./assets/images/change-default-theme-value.png" alt="change-default-theme-value" />
+        </div>
+
+        <!-- ===================================================================================-->
+        <!-- 5 Contact us form submission-->
+        <!-- ===================================================================================-->
+
+        <h1 id="contact-us"><span>05</span>Contact us form submission</h1>
+
+        <div>
+            <div class="visual-guide">
+                <p>
+                    Form submission
+                </p>
+                <img src="./assets/images/contact-us-form-submission.png" alt="contact-us-form-submission" />
+            </div>
+            <div class="visual-guide" style="margin-top:20px;">
+                <p>
+                    Environment variables
+                </p>
+                <img src="./assets/images/contact-us-env-variable.png" alt="contact-us-env-variable" />
+            </div>
+            <div style="max-width:1000px; margin-top:12px;">
+                <p>
+                    No need to fret! The Gmail address provided here is your email address, and the password isn't your
+                    regular Gmail password; it's an app password. If you're unsure how to create an app password, please
+                    refer to our documentation.
+                </p>
+
+                <p>
+                    We utilize Google's SMTP service. If you need help creating an app password for SMTP, check out this
+                    guide: <a class="styled-link" href="https://support.google.com/accounts/answer/185833?hl=en">
+                        Sign in with app passwords
+                    </a>
+                </p>
+
+            </div>
+            <p>
+                For more information,
+                <a class="styled-link" href="https://nodemailer.com/">
+                    check the nodemailer documentation on how to use this.
+                </a>
+            </p>
+        </div>
+
+        <!-- ===================================================================================-->
+        <!-- 06 Deploy & Static build -->
+        <!-- ===================================================================================-->
+        <h1 id="ds"><span>06</span>Deploy & Static build</h1>
+
+        <div class="list-1">
+            <h2>next.js Deploy</h2>
+            <ol>
+                <li> Navigate to techlab-next <br /> for deploying to vercel using terminal you need to install
+                    vercel-cli on your machine <a style="color: rgb(152, 121, 245)"
+                        href="https://vercel.com/docs/cli?query=cli#introduction/vercel-cli-reference"> Read
+                        more... </a>
+                </li>
+                <li>
+                    <code>npm install vercel --save-dev</code>
+                </li>
+                <li>run command:</li>
+                <li>
+                    <code>vercel login</code>
+                    <br /> After the login process is done. run command:
+                </li>
+                <li>
+                    <code>vercel</code>
+                    <br /> after the deploy process is done. then deploy the production version
+                </li>
+                <li>
+                    <code>vercel --prod</code>
+                </li>
+            </ol>
+            <p>
+                For more information
+                <a class="styled-link" href="https://vercel.com/guides/deploying-nextjs-with-vercel">
+                    How to Deploy a Next.js Site with Vercel
+                </a>
+            </p>
+            <p>
+                For other hosting provider please visit
+                <a class="styled-link" href="https://nextjs.org/docs/deployment">
+                    next.js app deployment
+                </a>
+            </p>
+        </div>
+
+        <div class="list-1">
+            <h2>next.js static build</h2>
+            <ol>
+                <li>Navigate to techlab-next</li>
+                <li>
+                    run command: <code>npm run export</code>
+                </li>
+                <li>
+                    after the export is done you will get a folder called <code>export</code>.
+                    Host that folder anywhere you want
+                </li>
+                <li>
+                    to see the export build, run command: <code>npm run start</code>
+                </li>
+            </ol>
+			<p>
+                For more information
+                <a class="styled-link" href="https://nextjs.org/docs/pages/building-your-application/deploying/static-exports">
+                    Static Export
+                </a>
+            </p>
+        </div>
+
+
+        <!-- ===================================================================================-->
+        <!-- 07 Credits -->
+        <!-- ===================================================================================-->
+
+        <h1 id="cr"><span>07</span>Credits</h1>
+        <ul>
+            <li>
+                <code> nextjs </code>
+            </li>
+            <li>
+                <code> tailwindcss </code>
+            </li>
+            <li>
+                <code> shadcn-ui </code>
+            </li>
+            <li>
+                <code> react-countup </code>
+            </li>
+            <li>
+                <code> react-icons </code>
+            </li>
+            <li>
+                <code> swiper </code>
+            </li>
+            <li>
+                <code> keen-slider </code>
+            </li>
+            <li>
+                <code> react-transition-group </code>
+            </li>
+            <li>
+                <code> yet-another-react-lightbox </code>
+            </li>
+            <li>
+                <code> react-visibility-sensor </code>
+            </li>
+            <li>
+                <code> formik </code>
+            </li>
+            <li>
+                <code> yup </code>
+            </li>
+        </ul>
+
+        <!-- ===================================================================================-->
+        <!-- 08 Thanks -->
+        <!-- ===================================================================================-->
+
+        <section id="thanks">
+            <h1 id="thanks"><span>08</span>Thanks</h1>
+            <hr>
+            <h4 id="thanks_span_style">
+                <span>Once again thank you for purchasing one of our Templates</span>
+            </h4>
+            <h2>Best Regards</h2>
+            <h3><a class="styled-link" href="https://themeforest.net/user/figthemes" target="_blank">FigTheme</a></h3>
+        </section>
+
+        <footer>
+            <hr>
+            <p>Copyright@2024 | A Template by FigTheme</p>
+        </footer>
+    </div>
+
+    <!-- JavaScripts -->
+    <script type='text/javascript' src='assets/js/jquery.min.js'></script>
+    <script type='text/javascript' src='assets/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='assets/js/jquery.scrollTo.min.js'></script>
+    <script type='text/javascript' src='assets/js/jquery.localscroll-1.2.7-min.js'></script>
+    <script type='text/javascript' src='assets/js/prism.js'></script>
+    <script type='text/javascript' src='assets/js/custom.js'></script>
+
+</body>
+
+</html>
