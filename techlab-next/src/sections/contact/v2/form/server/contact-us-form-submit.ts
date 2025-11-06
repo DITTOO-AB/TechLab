@@ -1,63 +1,46 @@
 'use server';
 
-import { ServerActionResponse } from '@/src/common-types';
 import nodemailer from 'nodemailer';
 import { ContactUsSchemaType } from '..';
 
-export async function contactUsFormSubmit(
-  values: ContactUsSchemaType
-): Promise<ServerActionResponse<boolean>> {
+export async function contactUsFormSubmit(values: ContactUsSchemaType) {
   const { name, email, subject, message, phone } = values;
 
   try {
+    // Rackspace SMTP transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.RACKSPACE_SMTP_HOST || 'secure.emailsrvr.com',
+      port: Number(process.env.RACKSPACE_SMTP_PORT || 465),
+      secure: (process.env.RACKSPACE_SMTP_PORT || '465') === '465', // true for SSL
       auth: {
-        user: process.env.CONTACT_MAIL_ADDRESS,
-        pass: process.env.CONTACT_MAIL_PASSWORD,
+        user: process.env.RACKSPACE_SMTP_USER!,
+        pass: process.env.RACKSPACE_SMTP_PASS!,
       },
+      tls: { rejectUnauthorized: true },
     });
 
-    const mailOptions = {
-      from: email,
-      to: process.env.CONTACT_MAIL_ADDRESS,
-      subject: subject,
-      html: `
-        <h3 style="margin-bottom:8px">Name:</h3>
-        <p style="margin:0">${name}</p>
-        <br/>
-        <h3 style="margin:0; margin-bottom:8px">Email:</h3>
-        <p style="margin:0">${email}</p>
+    // Keep FROM on your Rackspace domain (for SPF/DKIM)
+    const fromEmail = process.env.MAIL_FROM || process.env.RACKSPACE_SMTP_USER!;
+    const toEmail   = process.env.MAIL_TO   || process.env.RACKSPACE_SMTP_USER!;
 
-        ${
-          phone &&
-          `
-        <br/>
-        <h3 style="margin:0; margin-bottom:8px">Phone:</h3>
-        <p style="margin:0">${phone}</p>
-        `
-        }
-        
-        <br/>
-        <h3 style="margin:0; margin-bottom:8px">Body:</h3>
-        <p style="margin-top:0">${message}</p>
+    const mailOptions = {
+      from: `"${name}" <${fromEmail}>`,
+      to: toEmail,
+      replyTo: `${name} <${email}>`,
+      subject: subject || 'New contact message',
+      html: `
+        <h3 style="margin-bottom:8px;">New Contact Message</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong><br>${message}</p>
       `,
     };
 
     await transporter.sendMail(mailOptions);
-
-    return {
-      isSuccess: true,
-      data: true,
-      message: 'Thanks for getting in touch',
-    };
-  } catch (error) {
-    console.error(error);
-
-    return {
-      isSuccess: false,
-      data: null,
-      message: 'Internal Server Error',
-    };
+    return { success: true };
+  } catch (error: any) {
+    console.error('Rackspace send error:', error);
+    return { success: false, error: error.message || 'Failed to send message' };
   }
 }
